@@ -15,8 +15,9 @@ how to introduce **policy enforcement, auditability, and execution control** bet
 > It does **not** provide a public implementation, product, or deployable solution.
 
 ---
+![SCR-20251230-mwnr](https://github.com/user-attachments/assets/112dd858-e59f-4f80-ab7c-5d371f1b3ea6)
 
-<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/d1c7e23b-14e7-4676-9646-ff0863f04b78" />
+
 
 ## What This Is
 
