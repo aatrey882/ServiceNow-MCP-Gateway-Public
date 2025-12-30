@@ -7,13 +7,16 @@ This repository documents a **personal, non-commercial technical exploration** o
 The focus of this work is architectural:
 how to introduce **policy enforcement, auditability, and execution control** between AI intent and downstream system actions.
 
+
+<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/d9718130-7c7c-4d10-a392-9e7cd75a1cf7" />
+
 > **Important**
 > This repository intentionally contains **documentation and reference materials only**.
 > It does **not** provide a public implementation, product, or deployable solution.
 
 ---
 
-<img width="695" height="690" alt="image" src="https://github.com/user-attachments/assets/d1c7e23b-14e7-4676-9646-ff0863f04b78" />
+<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/d1c7e23b-14e7-4676-9646-ff0863f04b78" />
 
 ## What This Is
 
@@ -52,7 +55,7 @@ without embedding governance logic directly into every integration.
 
 ---
 
-<img width="695" height="690" alt="image" src="https://github.com/user-attachments/assets/235a655a-8f39-44eb-bde3-461302512b2b" />
+<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/235a655a-8f39-44eb-bde3-461302512b2b" />
 
 
 
@@ -78,7 +81,7 @@ This repository includes architecture diagrams and walkthroughs that illustrate 
 All visuals are labeled as **reference architecture** and are provided for learning purposes.
 
 ---
-<img width="838" height="693" alt="SCR-20251230-nbul" src="https://github.com/user-attachments/assets/1af46a9b-54d0-4d71-9eb7-13d858488228" />
+<img width="auto" height="auto" alt="SCR-20251230-nbul" src="https://github.com/user-attachments/assets/1af46a9b-54d0-4d71-9eb7-13d858488228" />
 
 ## Status
 
@@ -91,9 +94,74 @@ There is no public roadmap, release plan, or commercialization intent.
 <img width="1255" height="2821" alt="image" src="https://github.com/user-attachments/assets/b5aeaf69-e01a-4c62-ad5a-42e936a2d98b" />
 
 
+# 🔄 MCP Gateway Flow Cycle
+
+This document outlines the complete request-response lifecycle within the MCP Gateway architecture, detailing how user requests are processed, secured, and executed against ServiceNow.
 
 
+## ⚡ The 8-Step Flow
 
+The lifecycle of a single request travels through four distinct zones: **User**, **Client**, **Gateway**, and **ServiceNow**.
+
+### 1. User Makes Request
+> **Actor:** User
+- The user interacts with their AI assistant (Claude, Gemini, etc.) using natural language.
+- **Example:** *"Create a P1 incident for the database outage."*
+
+### 2. Request to MCP Client
+> **Actor:** AI Agent (MCP Client)
+- The AI agent receives the natural language prompt.
+- It identifies that external tools are needed to fulfill the request.
+- It prepares to communicate with the configured MCP Gateway.
+
+### 3. Client Requests Tools
+> **Actor:** AI Agent → Gateway
+- The client connects to the Gateway (via stdio or HTTP) and requests the list of available capabilities (tools).
+- **Protocol:** `tools/list`
+
+### 4. Gateway Returns Tools
+> **Actor:** Gateway → AI Agent
+- The **Policy Engine** intercepts the request.
+- It evaluates the user's identity and permissions.
+- It filters the global capability catalog, returning *only* the tools this specific user is allowed to see.
+
+### 5. Tool Invocation
+> **Actor:** AI Agent → Gateway
+- The AI Agent selects the appropriate tool (e.g., `create_incident`) and extracts parameters from the user's prompt.
+- It sends a JSON-RPC request to the Gateway.
+- **Protocol:** `tools/call`
+
+### 6. Gateway → ServiceNow
+> **Actor:** Gateway → ServiceNow API
+- **Pre-Execution Check:** The Gateway validates the action against the active policy (checking for read-only modes, required approvals, etc.).
+- The **ServiceNow Connector** translates the request into a specific ServiceNow API call (REST or SDK).
+- It executes the authenticated request against the ServiceNow instance.
+
+### 7. ServiceNow Response
+> **Actor:** ServiceNow → Gateway
+- ServiceNow returns the raw result (e.g., the created incident record).
+- **Post-Execution:** The Gateway receives the data and applies **Field Filtering** policies to redact sensitive information before passing it back.
+
+### 8. Result to User
+> **Actor:** AI Agent → User
+- The Gateway returns the sanitized JSON result to the AI Agent.
+- The AI Agent interprets the structured data and generates a natural language response for the user.
+- **Result:** *"I've successfully created Incident INC12345. You can view it here..."*
+
+---
+
+## 🔐 Security Layers Throughout
+
+The Gateway architecture enforces security at every stage of the lifecycle, ensuring a "Defense in Depth" strategy.
+
+| Layer | Location | Description |
+| :--- | :--- | :--- |
+| **Authentication** | Client ↔ Gateway | Verifies the identity of the calling AI Agent (OAuth/API Key). |
+| **Authentication** | Gateway ↔ ServiceNow | Manages secure, scoped credentials for backend access. |
+| **Policy Enforcement** | Capability Discovery | Hides unauthorized tools from the user entirely. |
+| **Policy Enforcement** | Execution Request | Validates specific actions (e.g., "Can User A create P1 incidents?"). |
+| **Audit Logging** | Decision Points | Records every ALLOW/DENY decision, input payload, and outcome for compliance. |
+| **Safety Mechanisms** | Global Guardrails | Includes **Kill Switch**, **Read-Only Mode**, **Rate Limiting**, and **Approval Workflows**. |
 
 
 
@@ -102,4 +170,4 @@ There is no public roadmap, release plan, or commercialization intent.
 This repository reflects a personal learning exercise and does not represent the views of any employer, client, or vendor.
 ServiceNow is referenced solely as an example of a downstream enterprise system.
 
-*Created by Aashish Atrey*
+
