@@ -56,7 +56,7 @@ without embedding governance logic directly into every integration.
 
 ---
 
-<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/235a655a-8f39-44eb-bde3-461302512b2b" />
+![SCR-20251230-mwjy](https://github.com/user-attachments/assets/d96da915-a0ca-462d-86ec-62cd03cb39cd)
 
 
 
