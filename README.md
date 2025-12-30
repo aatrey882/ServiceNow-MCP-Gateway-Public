@@ -86,6 +86,16 @@ This work is ongoing and intentionally scoped as a **personal technical explorat
 There is no public roadmap, release plan, or commercialization intent.
 
 ---
+<img width="1508" height="746" alt="image" src="https://github.com/user-attachments/assets/32e4781f-befc-4dcf-bf7e-cfd02f42a396" />
+<img width="1470" height="646" alt="image" src="https://github.com/user-attachments/assets/2c632b9a-ff6c-454c-a082-d67b7ea12454" />
+<img width="1255" height="2821" alt="image" src="https://github.com/user-attachments/assets/b5aeaf69-e01a-4c62-ad5a-42e936a2d98b" />
+
+
+
+
+
+
+
 
 ## Disclaimer
 
