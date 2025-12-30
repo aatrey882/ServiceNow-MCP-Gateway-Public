@@ -1,1 +1,1 @@
-# ServiceNow-MCP-Gateway-Public-
+# ServiceNow MCP-Gateway Public
