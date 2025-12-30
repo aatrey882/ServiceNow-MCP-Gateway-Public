@@ -82,7 +82,7 @@ This repository includes architecture diagrams and walkthroughs that illustrate 
 All visuals are labeled as **reference architecture** and are provided for learning purposes.
 
 ---
-<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/1af46a9b-54d0-4d71-9eb7-13d858488228" />
+<img width="838" height="693" alt="SCR-20251230-nbul" src="https://github.com/user-attachments/assets/3af652ac-b0b2-47bf-8be5-5a0109990b6a" />
 
 ## Status
 
