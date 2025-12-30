@@ -8,7 +8,7 @@ The focus of this work is architectural:
 how to introduce **policy enforcement, auditability, and execution control** between AI intent and downstream system actions.
 
 
-<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/d9718130-7c7c-4d10-a392-9e7cd75a1cf7" />
+<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/d9718130-7c7c-4d10-a392-9e7cd75a1cf7" />
 
 > **Important**
 > This repository intentionally contains **documentation and reference materials only**.
@@ -16,7 +16,7 @@ how to introduce **policy enforcement, auditability, and execution control** bet
 
 ---
 
-<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/d1c7e23b-14e7-4676-9646-ff0863f04b78" />
+<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/d1c7e23b-14e7-4676-9646-ff0863f04b78" />
 
 ## What This Is
 
@@ -55,7 +55,7 @@ without embedding governance logic directly into every integration.
 
 ---
 
-<img width="auto" height="auto" alt="image" src="https://github.com/user-attachments/assets/235a655a-8f39-44eb-bde3-461302512b2b" />
+<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/235a655a-8f39-44eb-bde3-461302512b2b" />
 
 
 
@@ -81,7 +81,7 @@ This repository includes architecture diagrams and walkthroughs that illustrate 
 All visuals are labeled as **reference architecture** and are provided for learning purposes.
 
 ---
-<img width="auto" height="auto" alt="SCR-20251230-nbul" src="https://github.com/user-attachments/assets/1af46a9b-54d0-4d71-9eb7-13d858488228" />
+<img width="auto" height="500" alt="image" src="https://github.com/user-attachments/assets/1af46a9b-54d0-4d71-9eb7-13d858488228" />
 
 ## Status
 
